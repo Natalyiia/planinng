@@ -1,0 +1,26 @@
+@import "src/mixin";
+.add {
+  width: 161px;
+  height: 40px;
+  @include flexDisplay(row,center,center,nowrap);
+  color: #1071FF;
+  font-weight: 600;
+  border: none;
+  background: none;
+  @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 900px) {
+      height: 24px;
+      width: 24px;
+    }
+    @include flexDisplay(row,flex-end,center,nowrap);
+  }
+  &__icon {
+    margin-right: 11.75px;
+    @include imageSize(12px,12px);
+  }
+  &__label{
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
+  }
+}
