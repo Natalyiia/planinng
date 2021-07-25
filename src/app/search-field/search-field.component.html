@@ -1,0 +1,4 @@
+ <div class="search">
+    <img src="assets/loupe.png" alt="loupe-img" class="search__icon">
+   <input type="text" placeholder="Поиск" class="search__string" (focus)="isFocus=!isFocus" (blur)="isFocus=!isFocus" [class.search__string_active]="isFocus">
+  </div>

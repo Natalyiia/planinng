@@ -1,0 +1,24 @@
+@mixin imageSize($width,$height){
+  width: $width;
+  height: $height;
+}
+@mixin flexDisplay($flexDirection,$horizontalDirection,$verticalDirection,$wrap){
+  display: flex;
+  flex-direction: $flexDirection;
+  justify-content: $horizontalDirection;
+  align-items: $verticalDirection;
+  flex-wrap: $wrap;
+}
+@mixin font{
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+@mixin labelFont{
+  @include font();
+  color:rgba(0, 0, 0, 0.54);
+  font-size: 10px;
+  line-height: 12px;
+}

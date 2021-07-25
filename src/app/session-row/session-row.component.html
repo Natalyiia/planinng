@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="row__date">{{session.sessionDate|date:'d MMM HH:mm':undefined:'ru'}}</div>
+  <div class="row__name">{{session.sessionName}}</div>
+  <div class="row__members">{{session.numberOfParticipants}}</div>
+  <div class="row__trainer">Тренер</div>
+  <div class="row__progress">{{session.sessionProgress}}%</div>
+  <div class="row__edit" (click)="isEditor=!isEditor" >
+    <div class="editor" *ngIf="isEditor" >
+      <div class="editor__update">Редактировать</div>
+      <div class="editor__delete">Удалить слот</div>
+    </div>
+  </div>
+
+</div>
+

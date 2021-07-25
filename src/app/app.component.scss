@@ -1,0 +1,18 @@
+@import "src/mixin";
+.body{
+  margin: 0 67px 0;
+}
+
+.filter-wrapper{
+  //border:1px solid;
+  overflow:hidden;
+  width: 166px;
+  height: 66px;
+  margin-right: 30px;
+  @include flexDisplay(row,start,start,nowrap)
+}
+.filter-inputs{
+  @include flexDisplay(row,start,center,wrap);
+}
+.menu{
+}

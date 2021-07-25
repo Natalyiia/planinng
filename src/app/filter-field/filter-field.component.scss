@@ -1,0 +1,90 @@
+@import "src/mixin";
+.filter{
+  position: relative;
+  height: 48px;
+
+  @include flexDisplay(column,flex-end,start,nowrap);
+
+  &__label{
+    @include labelFont();
+    margin-bottom: 4px;
+  }
+  &__label_open{
+    color: #1071FF;
+  }
+  &__select {
+    display: flex;
+    @include font();
+    background: url("../../assets/arrow-down.png") no-repeat right ;
+    width: 100%;
+    padding-bottom: 7px;
+    border:none;
+    border-bottom:1px solid rgba(0, 0, 0, 0.08);
+    text-align: start;
+
+  }
+  &__select_open{
+    background: none;
+    background: url("../../assets/arrow-up.png") no-repeat right ;
+
+  }
+
+
+  &__select_filter,&__select_count{
+    padding:1px 5px 3px;
+    border-radius: 24px;
+    @include labelFont();
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  &__select_filter{
+    position: relative;
+    padding-right:18px;
+    background-repeat:no-repeat;
+    background-position: right 5% bottom 50%;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    span{
+      display: flex;
+      width: 7px;
+      height: 7px;
+      background-image: url("../../assets/close-icon.png");
+      position: absolute;
+      right: 5px;
+      bottom: 4px;
+    }
+  }
+}
+.filter-options{
+  position: fixed;
+  z-index: 1;
+  //overflow-y: auto;
+  //z-index: 10;
+  margin-top:8px;
+  @include flexDisplay(column,start,start,nowrap);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  padding: 18px 16px;
+  width: 200px;
+  background-color: white;
+  &__option{
+    margin-bottom: 20px;
+    width: 100%;
+    span{
+      display: block;
+      width: 185px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  &__option:last-child{
+    margin-bottom: 0;
+  }
+  &__option_selected{
+    color: #1071FF;
+    background: url("../../assets/check.png") no-repeat right ;
+  }
+}

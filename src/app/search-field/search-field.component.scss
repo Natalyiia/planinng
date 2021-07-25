@@ -1,0 +1,19 @@
+@import "src/mixin";
+.search{
+  border-bottom:1px solid rgba(0, 0, 0, 0.08);
+  //border:1px solid;
+  height: 41px;
+  padding-bottom: 7px;
+  @include flexDisplay(row,start,flex-end,nowrap);
+  &__icon{
+    @include  imageSize(16px,16px);
+    margin-right: 17px;
+  }
+  &__string{
+    border:none;
+    box-sizing: border-box;
+  }
+  &__string_active{
+    outline:none;
+  }
+}
