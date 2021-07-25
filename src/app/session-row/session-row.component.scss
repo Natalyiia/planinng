@@ -1,33 +1,67 @@
 @import "src/mixin";
 
 .row {
-  @include flexDisplay(row, center, center, nowrap);
+  @include flexDisplay(row, flex-start, center, nowrap);
   width: 100%;
   height: 36px;
-  padding:0 8px;
   &__date {
-    min-width: 86px;
     width: 86px;
     margin-right: 24px;
+    @media only screen and (max-width: 900px) {
+      margin-right: 16px;
+    }
   }
   &__name{
     width: 546px;
     margin-right: 30px;
+    @media only screen and (max-width: 900px) {
+      min-width: 118px;
+      margin-right: 16px;
+    }
   }
   &__members{
     width: 104px;
     margin-right: 32px;
+    @media only screen and (max-width: 900px) {
+      min-width: 26px;
+      margin-right: 8px;
+    }
   }
   &__trainer{
     width: 100px;
     margin-right: 32px;
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
   }
   &__progress{
-    width:68px ;
-    //margin-right: 78px;
+    min-width: 54px;
+    margin-right: 73px;
     color: rgba(0, 0, 0, 0.54);
-    padding-left:18px;
+    padding-left:21px;
     background: url("../../assets/progress.png") no-repeat left  bottom 50%;
+    @media only screen and (max-width: 900px) {
+      min-width: 37px;
+      margin-right: 0;
+    }
+  }
+  &__progress-header {
+    min-width: 180px;
+    @media only screen and (max-width: 900px) {
+      min-width: 58px;
+      margin-right: 0;
+      img{
+        display: none;
+      }
+    }
+
+    &--click {
+      color: rgba(0, 0, 0, 0.87);
+    }
+
+    img {
+      @include imageSize(8px, 5px)
+    }
   }
   &__edit{
     visibility: hidden;
@@ -39,18 +73,36 @@
     height: 32px;
     background: url("../../assets/edit.png") no-repeat right 50% bottom 50%;
     background-color: rgba(0, 0, 0, 0.16);
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    height: 52px;
+  }
+  @media only screen and (max-width: 350px) {
+    height: 70px;
   }
 }
-.row:hover{
+.row:hover[data-type=false]{
+  padding: 0;
   border-radius: 4px;
   background-color:rgba(0, 0, 0, 0.10);
 }
-.row:hover .row__edit{
+.row:hover[data-type=false] .row__edit{
   visibility: visible;
-  position: relative
+  position: relative;
+  @media only screen and (max-width: 900px) {
+    display:none
+  }
 }
-
+.row[data-type=true]{
+  font-size: 10px;
+  line-height: 12px;
+  color: rgba(0, 0, 0, 0.54);
+}
 .editor{
+  background-color:white;
   display: flex;
   position: absolute;
   z-index: 6;

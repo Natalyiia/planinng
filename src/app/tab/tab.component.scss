@@ -1,21 +1,29 @@
 @import "src/mixin";
 .tabs {
+  padding-left: 8px;
+  padding-right: 8px;
+  @media only screen and (max-width: 900px) {
+    padding: 0 16px;
+  }
   @include flexDisplay(row,start,center,wrap);
   height: 36px;
-  &__link{
+  &__link {
     color: rgba(0, 0, 0, 0.54);
     text-decoration: none;
     margin-right: 24px;
     display: block;
     height: 36px;
 
-  }
-  &__link--active{
-    color: rgba(0, 0, 0, 0.87);
-    text-decoration: none;
-    border-bottom-color: #1071FF;
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
+
+    &--active {
+      color: rgba(0, 0, 0, 0.87);
+      text-decoration: none;
+      border-bottom-color: #1071FF;
+      border-bottom-style: solid;
+      border-bottom-width: 2px;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
   }
 
 }

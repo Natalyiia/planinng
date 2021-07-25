@@ -1,18 +1,131 @@
 @import "src/mixin";
-.body{
-  margin: 0 67px 0;
+.wrapper{
+  margin: 0 59px 0;
+  @media only screen and (max-width: 900px) {
+    margin: 0;
+  }
+}
+.header{
+  @include flexDisplay(row,space-between,center,nowrap);
+  margin: 12px 24px 16px 16px;
+  height: 64px;
+  &--title{
+    display: none;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    @media only screen and (max-width: 900px) {
+      display: block;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    margin: 0 2px 0 8px;
+    height: 44px;
+  }
+}
+.filter-wrapper{
+  overflow:hidden;
+  width: 166px;
+  height: 66px;
+  margin-right: 30px;
+  @include flexDisplay(row,flex-start,flex-start,nowrap);
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+    margin-right: 0;
+  }
+  &--mobile{
+    display: none;
+    @media only screen and (max-width: 900px) {
+      display: block;
+      width: 100%;
+      margin-right: 0;
+    }
+  }
 }
 
-.filter-wrapper{
+.filter-wrapperFilter{
   //border:1px solid;
   overflow:hidden;
   width: 166px;
   height: 66px;
   margin-right: 30px;
-  @include flexDisplay(row,start,start,nowrap)
+  @include flexDisplay(row,flex-start,flex-start,nowrap);
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
 }
-.filter-inputs{
-  @include flexDisplay(row,start,center,wrap);
+.filter{
+  &__inputs {
+    position: relative;
+    @include flexDisplay(row, flex-start, center, wrap);
+    padding-left: 8px;
+    padding-right: 8px;
+    @media only screen and (max-width: 900px) {
+      padding: 0 16px;
+    }
+  }
+  &__footer{
+    margin:10px 8px 45px;
+    height: 36px;
+    @include flexDisplay(row,flex-start,center,nowrap);
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
+  }
 }
+.reset{
+  width: 114px;
+  height: 36px;
+  padding-left: 10px;
+  @include flexDisplay(row,center,center,nowrap);
+  background:url("../assets/reset.png") no-repeat left 20% bottom 50%;
+}
+.filter-options{
+  width: 181px;
+  height: 36px;
+  margin-left: 76px;
+  @include flexDisplay(row,center,center,nowrap);
+  &__img{
+    @include imageSize(14px,14px)
+  }
+  &__title{
+    margin-left: 10px;
+    font-weight: 600;
+    color: #1071FF;
+  }
+}
+
 .menu{
+  padding-left: 8px;
+  padding-right: 8px;
+  @media only screen and (max-width: 900px) {
+  padding: 0 16px;
+   }
+}
+app-search-field{
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+  }
+}
+.mobile-filter{
+  display: none;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 16px;
+  top: 27px;
+  background: url("../assets/filter-inactive.png") no-repeat left 50% top 50%;
+  @media only screen and (max-width: 900px) {
+    display: flex;
+  }
+}
+.body{
+  &__hr{
+    margin: 0;
+    margin-right: 8px;
+    margin-left: 8px;
+    @media only screen and (max-width: 900px) {
+      margin: 0;
+    }
+  }
 }

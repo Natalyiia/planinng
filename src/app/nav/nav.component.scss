@@ -4,4 +4,7 @@
     color: rgba(0, 0, 0, 0.54);
     text-decoration: none;
   }
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
 }

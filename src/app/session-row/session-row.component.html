@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row" *ngIf="!isHeader" data-type="false">
   <div class="row__date">{{session.sessionDate|date:'d MMM HH:mm':undefined:'ru'}}</div>
   <div class="row__name">{{session.sessionName}}</div>
   <div class="row__members">{{session.numberOfParticipants}}</div>
-  <div class="row__trainer">Тренер</div>
+  <div class="row__trainer">{{session.nameOfTrainer}}</div>
   <div class="row__progress">{{session.sessionProgress}}%</div>
   <div class="row__edit" (click)="isEditor=!isEditor" >
     <div class="editor" *ngIf="isEditor" >
@@ -10,6 +10,13 @@
       <div class="editor__delete">Удалить слот</div>
     </div>
   </div>
-
+</div >
+<!--(window:resize)="onResize($event)"-->
+<div class="row" *ngIf="isHeader" data-type="true" >
+  <div class="row__date">{{head[0]}}</div>
+  <div class="row__name">{{head[1]}}</div>
+  <div class="row__members">{{head[2]}}</div>
+  <div class="row__trainer">{{head[3]}}</div>
+  <div class="row__progress-header" (click)="onSorting()" [class.row__progress-header--click]="isSortByProgress">{{head[4]}}
+  <img src="assets/arrow-down.png"/></div>
 </div>
-

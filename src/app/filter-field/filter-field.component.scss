@@ -21,23 +21,21 @@
     border:none;
     border-bottom:1px solid rgba(0, 0, 0, 0.08);
     text-align: start;
-
-  }
-  &__select_open{
-    background: none;
-    background: url("../../assets/arrow-up.png") no-repeat right ;
-
+    &--open {
+      background: none;
+      background: url("../../assets/arrow-up.png") no-repeat right;
+    }
   }
 
 
-  &__select_filter,&__select_count{
+  &__select-filter,&__select-count{
     padding:1px 5px 3px;
     border-radius: 24px;
     @include labelFont();
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.05);
   }
-  &__select_filter{
+  &__select-filter{
     position: relative;
     padding-right:18px;
     background-repeat:no-repeat;
@@ -52,16 +50,14 @@
       height: 7px;
       background-image: url("../../assets/close-icon.png");
       position: absolute;
-      right: 5px;
-      bottom: 4px;
+      right: 6px;
+      bottom: 6px;
     }
   }
 }
 .filter-options{
   position: fixed;
   z-index: 1;
-  //overflow-y: auto;
-  //z-index: 10;
   margin-top:8px;
   @include flexDisplay(column,start,start,nowrap);
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
@@ -69,6 +65,9 @@
   padding: 18px 16px;
   width: 200px;
   background-color: white;
+  @media only screen and (max-width: 900px) {
+    width: 90%;
+  }
   &__option{
     margin-bottom: 20px;
     width: 100%;
@@ -79,12 +78,13 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+    &--selected{
+      color: #1071FF;
+      background: url("../../assets/check.png") no-repeat right ;
+    }
   }
   &__option:last-child{
     margin-bottom: 0;
   }
-  &__option_selected{
-    color: #1071FF;
-    background: url("../../assets/check.png") no-repeat right ;
-  }
+
 }

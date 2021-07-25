@@ -1,25 +1,47 @@
-<app-header></app-header>
-<div class="body">
+<div class="header">
+  <app-menu></app-menu>
+  <div class="header--title">Обучение</div>
+  <app-add-button></app-add-button>
+</div>
+<!--(click)="sortingByProgress($event)"-->
+<div class="wrapper" >
   <app-nav></app-nav>
   <app-title></app-title>
-  <app-tab></app-tab>
-  <hr>
-  <div class="filters">
-    <div class="filter-inputs">
-      <div class="filter-wrapper">
-        <app-search-field></app-search-field>
-      </div>
-      <div class="filter-wrapper" *ngFor="let iterFilter of filtersApp">
-        <app-filter-field style="width: 100%"
+  <div class="body">
+    <app-tab [isGroup]="isGroup"></app-tab>
+    <hr class="body__hr">
+    <div class="filters">
+      <div class="filter__inputs">
+        <div class="filter-wrapper">
+          <app-search-field (click)="clickSearch()"></app-search-field>
+        </div>
+        <div class="mobile-filter" (click)="clickFilter()"></div>
+        <div class="filter-wrapper--mobile" >
+          <app-filter-field [filter]='getFilter()'></app-filter-field>
+        </div>
+        <div class="filter-wrapperFilter" *ngFor="let iterFilter of getFilters()"  >
+          <app-filter-field style="width: 100%"
 
-          [filter]="iterFilter"
-        ></app-filter-field>
+                            [filter]="iterFilter"
+          ></app-filter-field>
+        </div>
+      </div>
+      <div class="filter__footer">
+        <div>{{getCountOfSession()}} сессий</div>
+        <div class="filter-options">
+          <img src="assets/filter.png" alt="filter-icon" class="filter-options__img">
+          <div class="filter-options__title"> Настроить фильтр</div>
+        </div>
+        <div class="reset">Сбросить</div>
       </div>
     </div>
-  </div>
-  <div class="menu" *ngFor="let iterSession of sessionApp">
-    <app-session-row style="position: relative"
-      [session]="iterSession"
-    ></app-session-row>
+    <div class="menu " ><app-session-row [isHeader]="true" ></app-session-row></div>
+    <div class="menu" *ngFor="let iterSession of sessionApp">
+      <app-session-row style="position: relative"
+                       [session]="iterSession"
+                       [isHeader]="false"
+                       (sorting)="sortingByProgress($event)"
+      ></app-session-row>
+    </div>
   </div>
 </div>
