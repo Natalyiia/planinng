@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Tabs} from "../app.component";
 
 @Component({
   selector: 'app-tab',
@@ -6,10 +7,14 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./tab.component.scss']
 })
 export class TabComponent implements OnInit {
-  @Input() isGroup:boolean=true;
+  @Input() tabs:Tabs[]=[]
+  setActive(id:number){
+    this.tabs.forEach(item=>item.isActive=item.id===id)
+  }
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

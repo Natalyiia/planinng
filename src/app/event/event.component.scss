@@ -1,0 +1,39 @@
+@import "src/mixin";
+.lable{
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  color: rgba(0, 0, 0, 0.54);
+  &--hide{
+    display: none;
+  }
+}
+.event-title{
+  color: rgba(0, 0, 0, 0.38);
+  padding-bottom:7px ;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 26px;
+}
+.event-type{
+  color: rgba(0, 0, 0, 0.22);
+}
+.event-wrapper{
+  @include flexDisplay(column,center,center,nowrap);
+  width: 246px;
+  height: 66px;
+  margin-right: 16px;
+}
+.event-wrapper:last-child{
+  margin-right: 0;
+}
+.settings{
+  @include flexDisplay(row,center,center,wrap);
+}
+.customization{
+  display: inline-block;
+  border:none;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  @include font();
+  color: rgba(0, 0, 0, 0.87);
+}

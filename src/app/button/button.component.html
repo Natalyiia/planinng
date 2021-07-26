@@ -1,0 +1,16 @@
+<button [ngStyle]="{width: button.width+'px', height:button.height+'px'}"
+        class="button"
+        (click)="isPressed=!button.isDisable"
+        [class.button--pressed]="isPressed"
+        (blur)="isPressed=false"
+        [class.button--disabled]="button.isDisable">
+  <span *ngIf="button.icon&&isTick" class="button__icon" [ngStyle]="{fontSize:button.size+'px'}">
+    &#10004;
+  </span>
+  <span *ngIf="button.icon&&!isTick" class="button__icon" [class.button__icon--rotate]="button.isRotate" [ngStyle]="{fontSize:button.size+'px'}">
+    {{button.icon}}
+  </span>
+  <span *ngIf="button.label" class="button__label">
+    {{button.label}}
+  </span>
+</button>

@@ -1,15 +1,16 @@
 <div class="header">
   <app-menu></app-menu>
   <div class="header--title">Обучение</div>
-  <app-add-button></app-add-button>
+  <app-add-button (click)="isModal=true"></app-add-button>
+
 </div>
 <!--(click)="sortingByProgress($event)"-->
 <div class="wrapper" >
   <app-nav></app-nav>
   <app-title></app-title>
   <div class="body">
-    <app-tab [isGroup]="isGroup"></app-tab>
-    <hr class="body__hr">
+    <app-tab  [tabs]="tabsPlaning" style="paddingLeft: 8px; paddingLight:8px"></app-tab>
+ <hr class="hr">
     <div class="filters">
       <div class="filter__inputs">
         <div class="filter-wrapper">
@@ -47,3 +48,6 @@
     </div>
   </div>
 </div>
+<app-modal *ngIf="isModal" [filter]="getFilter('program')" [eventList]="eventList" ></app-modal>
+<!--<app-modal *ngIf="isModal" [(ngModel)]="modelData" ></app-modal>-->
+

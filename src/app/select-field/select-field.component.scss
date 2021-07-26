@@ -1,62 +1,37 @@
 @import "src/mixin";
-.filter{
+.selection {
   position: relative;
   height: 48px;
+  width: 200px;
+  @include flexDisplay(column, center, start, nowrap);
 
-  @include flexDisplay(column,flex-end,start,nowrap);
-
-  &__label{
+  &__label {
     @include labelFont();
     margin-bottom: 4px;
   }
-  &__label--open{
+
+  &__label--open {
     color: #1071FF;
   }
+
   &__select {
     display: flex;
     @include font();
-    background: url("../../assets/arrow-down.png") no-repeat right ;
+    background: url("../../assets/arrow-down.png") no-repeat right;
     width: 100%;
     padding-bottom: 7px;
-    border:none;
-    border-bottom:1px solid rgba(0, 0, 0, 0.08);
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     text-align: start;
+
     &--open {
       background: none;
       background: url("../../assets/arrow-up.png") no-repeat right;
-      border-bottom:1px solid #1071FF;
-    }
-  }
-
-
-  &__select-filter,&__select-count{
-    padding:1px 5px 3px;
-    border-radius: 24px;
-    @include labelFont();
-    display: inline-block;
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-  &__select-filter{
-    position: relative;
-    padding-right:18px;
-    background-repeat:no-repeat;
-    background-position: right 5% bottom 50%;
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    span{
-      display: flex;
-      width: 7px;
-      height: 7px;
-      background-image: url("../../assets/close-icon.png");
-      position: absolute;
-      right: 6px;
-      bottom: 6px;
+      border-bottom: 1px solid #1071FF;
     }
   }
 }
-.filter-options{
+.selection-options{
   position: fixed;
   z-index: 1;
   margin-top:8px;
@@ -88,4 +63,11 @@
     margin-bottom: 0;
   }
 
+}
+.icon{
+  visibility: visible;
+  margin-right: 16px;
+  &--hide{
+    visibility: hidden;
+  }
 }

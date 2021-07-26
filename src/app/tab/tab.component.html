@@ -1,5 +1,8 @@
-<div class="tabs">
-<a href="#" class="tabs__link" [class.tabs__link--active]="isGroup" (click)="isGroup=true">Груповое</a>
-<a href="#" class="tabs__link" [class.tabs__link--active]="!isGroup" (click)="isGroup=false">Индивидуальное</a>
+<div class="tabs" >
+  <a href="#"
+     class="tabs__link"
+     [class.tabs__link--active]="iterTab.isActive"
+     (click)="setActive(iterTab.id)"
+     *ngFor="let iterTab of tabs"
+  >{{iterTab.title}}</a>
 </div>
-

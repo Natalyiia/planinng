@@ -1,0 +1,7 @@
+<div >
+  <label class="container" *ngFor="let iterCondititon of conditions" [class.container--checked]="iterCondititon.isSelected">
+    <input type="checkbox" (click)="changeCheck(iterCondititon.id)" checked="{{iterCondititon.isSelected?true:null}}">
+    <span class="checkmark" ></span>
+    {{iterCondititon.title}}
+  </label>
+</div>

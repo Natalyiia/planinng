@@ -1,5 +1,5 @@
 <div class="filter" >
-  <label for="{{filter.id}}" class="filter__label" [class.filter__label_open]="isOpen">{{filter.label}}</label>
+  <label for="{{filter.id}}" class="filter__label" [class.filter__label--open]="isOpen">{{filter.label}}</label>
   <button class="filter__select" id="{{filter.id}}" (click)="handlerClick($event)" [class.filter__select--open]="isOpen">
     <!--    (blur)="isOpen=!isOpen"-->
     <div [class.filter__select-filter]="filter.countSelected()>=1">{{filter.getSelected().value}}
@@ -10,7 +10,7 @@
 
 </div>
 
-<div class="filter-options"  *ngIf="isOpen">
+<div class="filter-options"  *ngIf="isOpen" [ngStyle]="{width:isModal?740+'px':width+'px'}">
   <div  *ngFor="let iterOption of filter.options" class="filter-options__option"  (click)="handlerFilter($event,iterOption.id)" [class.filter-options__option--selected]="iterOption.isSelected">
     <span >{{iterOption.value}}</span>
   </div>

@@ -1,0 +1,15 @@
+<div class="lable">Мероприятие</div>
+<div class="event-title">{{event.title}} <span class="event-type">{{event.type}}</span></div>
+<div class="settings">
+  <div class="event-wrapper">
+    <div class="lable">Дата</div>
+    <input type="date" class="customization" />
+  </div>
+  <div class="event-wrapper">
+    <div class="lable">Время</div>
+    <input type="time" class="customization"/>
+  </div>
+  <div class="event-wrapper">
+  <app-select-field [filter]="selectTrainer"></app-select-field>
+  </div>
+</div>

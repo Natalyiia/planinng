@@ -1,0 +1,26 @@
+<div class="modal">
+  <div class="modal-body">
+    <div class="head">
+      <h1 class="head__title">Планирование</h1>
+      <app-button [button]="buttonSave"></app-button>
+      <app-button [button]="buttonClose" (click)="closeModal()"></app-button>
+    </div>
+    <div class="modal-wrapper">
+      <app-tab [tabs]="tabsPlaning"></app-tab>
+    </div>
+    <hr class="modal-hr" style="margin-bottom: 32px">
+    <div class="modal-wrapper">
+      <div style="margin-bottom: 52px">
+        <app-filter-field [filter]='filter' [isModal]="true"  ></app-filter-field>
+      </div>
+      <div class="plan-title">
+        Мероприятие, дата и время проведения
+      </div>
+      <app-event *ngFor="let iterEvent of eventList" [event]="iterEvent"></app-event>
+      <div class="plan-title" style="margin-top: 34px">
+        Условия записи по коду
+      </div>
+      <app-radio-button [conditions]="conditions"></app-radio-button>
+    </div>
+  </div>
+</div>

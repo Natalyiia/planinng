@@ -13,6 +13,12 @@ import { FilterFieldComponent } from './filter-field/filter-field.component';
 import { SessionRowComponent } from './session-row/session-row.component';
 import { MenuComponent } from './menu/menu.component';
 import { AddButtonComponent } from './add-button/add-button.component';
+import { ModalComponent } from './modal/modal.component';
+import { ButtonComponent } from './button/button.component';
+import {FormsModule} from "@angular/forms";
+import { EventComponent } from './event/event.component';
+import { SelectFieldComponent } from './select-field/select-field.component';
+import { RadioButtonComponent } from './radio-button/radio-button.component';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -27,10 +33,17 @@ registerLocaleData(localeRu, 'ru')
     SessionRowComponent,
     MenuComponent,
     AddButtonComponent,
+    ModalComponent,
+    ButtonComponent,
+    EventComponent,
+    SelectFieldComponent,
+    RadioButtonComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

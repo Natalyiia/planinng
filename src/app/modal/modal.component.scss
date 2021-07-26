@@ -1,0 +1,43 @@
+@import "src/mixin";
+.modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom:0;
+  left:0;
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  justify-content: center;
+}
+.modal-body{
+  width: 826px;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  border-radius: 5px;
+  background: white;
+  height: 100%;
+}
+.head{
+  padding:  20px 24px;
+  @include flexDisplay(row, space-between, center,nowrap);
+  &__title{
+    margin:0px;
+    width: 722px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+.modal-wrapper{
+  padding: 0 24px;
+}
+.modal-hr{
+  margin: 0;
+}
+.plan-title{
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom:26px ;
+}

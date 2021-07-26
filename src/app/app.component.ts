@@ -1,10 +1,27 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 
-// export interface Option {
-//   value: string,
-//   isSelected: boolean,
-//   id: number,
-// }
+
+export interface Button {
+  icon:string,
+  iconImage:string,
+  label:string,
+  width:number,
+  height:number,
+  isRotate:boolean,
+  isDisable:boolean,
+  size:number
+}
+export interface Tabs{
+  title:string,
+  isActive:boolean,
+  id:number,
+}
+export interface EventList {
+  title:string,
+  type:string,
+  id:number,
+  trainers:OptionClass[],
+}
 
 export class OptionClass {
   constructor({value = '', isSelected = false, id = 0}) {
@@ -68,6 +85,9 @@ export class SessionClass {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  isModal:boolean=false;
+  pixel:number=8
   constructor() {
     this.sortingByProgress.bind(this)
   }
@@ -101,7 +121,7 @@ export class AppComponent {
     }
     return session
   }
-
+  tabsPlaning=[{title:'Груповое',isActive:true,id:0} ,{title:'Индивидуальное', isActive:false,id:1}]
   optionsProgram = [
     {value: 'Все', isSelected: true, id: -1},
     {value: 'Главные правила продаж', isSelected: false, id: -1},
@@ -156,6 +176,21 @@ export class AppComponent {
     }
   ]
   sessionApp = this.toFormSessions(this.sessions)
+
+  optionsTrainer = [
+    {value: 'Сергей Ефремов', isSelected: false, id: -1},
+    {value: 'Юлия Чапалова', isSelected: false, id: -1},
+    {value: 'Кирилл Котов', isSelected: false, id: -1}
+  ]
+
+  eventList:EventList[]=[
+    {title:'Главные правила продаж', type:'Тренинг', id:0, trainers:this.toFormOptions(this.optionsTrainer)},
+    {title:'Страхование без потерь', type:'Тренинг', id:0, trainers:this.toFormOptions(this.optionsTrainer)},
+    {title:'Страховой случай или как помочь клиенту', type:'Тренинг', id:0, trainers:this.toFormOptions(this.optionsTrainer)},
+  ]
+
+  modelData:any={filter:this.getFilter('program'),eventList:this.eventList, isModel:this.isModal }
+
   compare = (a: SessionClass, b: SessionClass) => b.sessionProgress - a.sessionProgress
   getFilter(id:string='sort'): FilterClass{
     return new FilterClass({...this.filters.find(item=>item.id===id)})// this.filters.find(item=>item.id===id)
@@ -172,11 +207,12 @@ export class AppComponent {
     return this.filtersApp.filter(f=>f.id!=='sort')
   }
 
-  isGroup: boolean = true;
   clickFilter(){
     console.log('filter')
   }
+
   clickSearch(){
     console.log('search')
   }
+
 }
