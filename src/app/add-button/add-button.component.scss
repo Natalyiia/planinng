@@ -7,6 +7,8 @@
   font-weight: 600;
   border: none;
   background: none;
+  box-sizing: border-box;
+  border-radius: 24px;
   @media only screen and (max-width: 900px) {
     @media only screen and (max-width: 900px) {
       height: 24px;
@@ -15,12 +17,36 @@
     @include flexDisplay(row,flex-end,center,nowrap);
   }
   &__icon {
-    margin-right: 11.75px;
-    @include imageSize(12px,12px);
+    font-size: 25px;
+    font-weight: 500;
   }
   &__label{
+    margin-left: 11.75px;
     @media only screen and (max-width: 900px) {
       display: none;
     }
   }
+  &--disabled{
+    color: rgba(0, 0, 0, 0.54);
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    border-radius: 24px;
+    @include flexDisplay(row,center,center,nowrap);
+  }
+  &--pressed{
+    background: #dae9ff;
+    color:#1071FF;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 24px;
+    @include flexDisplay(row,center,center,nowrap);
+  }
 }
+.add:hover{
+  background: #f6faff;
+}
+.add:focus{
+  background: #e3efff;
+}
+

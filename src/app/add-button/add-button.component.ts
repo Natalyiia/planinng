@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-button.component.scss']
 })
 export class AddButtonComponent implements OnInit {
-
+  isPressed:boolean=false;
   constructor() { }
 
   ngOnInit(): void {

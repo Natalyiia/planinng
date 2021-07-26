@@ -21,7 +21,6 @@
         </div>
         <div class="filter-wrapperFilter" *ngFor="let iterFilter of getFilters()"  >
           <app-filter-field style="width: 100%"
-
                             [filter]="iterFilter"
           ></app-filter-field>
         </div>
@@ -32,7 +31,10 @@
           <img src="assets/filter.png" alt="filter-icon" class="filter-options__img">
           <div class="filter-options__title"> Настроить фильтр</div>
         </div>
-        <div class="reset">Сбросить</div>
+        <button class="reset">
+          <span class="reset__icon">+</span>
+          <span class="reset__label">Сбросить</span>
+        </button>
       </div>
     </div>
     <div class="menu " ><app-session-row [isHeader]="true" ></app-session-row></div>
