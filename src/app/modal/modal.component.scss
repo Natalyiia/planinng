@@ -1,5 +1,6 @@
 @import "src/mixin";
 .modal{
+  overflow: scroll;
   position: fixed;
   top: 0;
   right: 0;
@@ -22,7 +23,7 @@
   padding:  20px 16px 20px 24px;
   @include flexDisplay(row, space-between, center,nowrap);
   &__title{
-    margin:0px;
+    margin:0;
     width: 722px;
     font-weight: bold;
     font-size: 18px;

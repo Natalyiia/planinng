@@ -82,42 +82,6 @@
   }
 }
 
-.reset {
-  width: 114px;
-  height: 36px;
-  @include flexDisplay(row, center, center, nowrap);
-  background: none;
-  border: none;
-  color: rgba(0, 0, 0, 0.54);
-  box-sizing: border-box;
-  border-radius: 24px;
-  &__icon {
-    font-weight: lighter;
-    font-size: 25px;
-    color: inherit;
-    transform: rotate(45deg);
-  }
-
-  &__label {
-    margin-left: 10px;
-    color:inherit;
-  }
-  &--enabled{
-    color:#1071FF;
-  }
-  &--pressed{
-    color:#1071FF;
-    background: #dae9ff;
-  }
-}
-.reset:hover{
-  background: #f6faff;
-  color:#1071FF;
-}
-.reset:focus{
-  background: #e3efff;
-  color:#1071FF;
-}
 
 .filter-options {
   margin-left: 76px;
@@ -152,8 +116,27 @@ app-search-field {
 
 
 .hr {
-  margin: 0 8px;
+  margin: 0 ;
+}
+.row-session:hover{
+    padding: 0;
+    border-radius: 4px;
+    background-color:rgba(0, 0, 0, 0.10);
+}
+.title{
+  @include flexDisplay(row,start,center,nowrap);
+  margin-bottom: 32px;
+  &__icon{
+    @include imageSize(28px,30px);
+    margin-right: 18.67px;
+  }
+  &__title{
+    font-weight: bold;
+    font-size: 38px;
+    line-height: 40px;
+    color: rgba(0, 0, 0, 0.87);
+  }
   @media only screen and (max-width: 900px) {
-    margin: 0;
+    display: none;
   }
 }

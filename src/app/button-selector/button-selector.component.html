@@ -1,0 +1,11 @@
+<app-button [button]="button" (click)="isOpen=!isOpen"></app-button>
+<div class="button-options"  *ngIf="isOpen">
+  <div class="button-options__group">Системные поля</div>
+  <div  *ngFor="let iterOption of getField()" class="button-options__option"  (click)="handlerFilter(iterOption.id)" [class.button-options__option--selected]="iterOption.isSelected">
+    <span >{{iterOption.value}}</span>
+  </div>
+  <div class="button-options__group">Дополнительные поля</div>
+  <div  *ngFor="let iterOption of getField(false)" class="button-options__option"  (click)="handlerFilter(iterOption.id)" [class.button-options__option--selected]="iterOption.isSelected">
+    <span >{{iterOption.value}}</span>
+  </div>
+</div>

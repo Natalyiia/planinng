@@ -1,6 +1,5 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {FilterClass, OptionClass} from "../app.component";
-import {filter} from "rxjs/operators";
+import {FilterClass} from "../app.component";
 
 @Component({
   selector: 'app-filter-field',
@@ -52,7 +51,7 @@ export class FilterFieldComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('selected-', this.filter.getSelected())
+
   }
 
 }

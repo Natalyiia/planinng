@@ -6,7 +6,6 @@ import localeRu from '@angular/common/locales/ru'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { TitleComponent } from './title/title.component';
 import { TabComponent } from './tab/tab.component';
 import { SearchFieldComponent } from './search-field/search-field.component';
 import { FilterFieldComponent } from './filter-field/filter-field.component';
@@ -19,6 +18,7 @@ import { SelectFieldComponent } from './select-field/select-field.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { CheckBoxComponent } from './check-box/check-box.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import { ButtonSelectorComponent } from './button-selector/button-selector.component';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -26,7 +26,6 @@ registerLocaleData(localeRu, 'ru')
   declarations: [
     AppComponent,
     NavComponent,
-    TitleComponent,
     TabComponent,
     SearchFieldComponent,
     FilterFieldComponent,
@@ -37,6 +36,7 @@ registerLocaleData(localeRu, 'ru')
     SelectFieldComponent,
     RadioButtonComponent,
     CheckBoxComponent,
+    ButtonSelectorComponent,
 
   ],
   imports: [

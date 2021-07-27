@@ -1,0 +1,42 @@
+@import "src/mixin";
+.button-options{
+  position: fixed;
+  z-index: 1;
+  margin-top:8px;
+  @include flexDisplay(column,start,start,nowrap);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  padding: 18px 16px;
+  width: 200px;
+  background-color: white;
+  @media only screen and (max-width: 900px) {
+    width: 90%;
+  }
+  &__option{
+    margin-bottom: 20px;
+    width: 100%;
+    span{
+      display: block;
+      width: 185px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    &--selected{
+      color: #1071FF;
+      background: url("../../assets/check.png") no-repeat right ;
+    }
+  }
+  &__group{
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+    margin-bottom: 19px;
+
+  }
+  &__option:last-child{
+    margin-bottom: 0;
+  }
+
+}

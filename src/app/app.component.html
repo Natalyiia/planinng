@@ -4,22 +4,25 @@
   <app-button [button]="buttonAdd" (click)="isModal=true"></app-button>
 
 </div>
-<div class="wrapper" >
+<div class="wrapper">
   <app-nav></app-nav>
-  <app-title></app-title>
+  <div class="title">
+    <img src="assets/Union.png" class="title__icon" alt="title-icon">
+    <div class="title__title">Планирование</div>
+  </div>
   <div class="body">
-    <app-tab  [tabs]="tabsPlaning" style="paddingLeft: 8px; paddingLight:8px"></app-tab>
- <hr class="hr">
+    <app-tab [tabs]="tabsPlaning" ></app-tab>
+    <hr class="hr">
     <div class="filters">
       <div class="filter__inputs">
         <div class="filter-wrapper">
           <app-search-field (click)="clickSearch()"></app-search-field>
         </div>
         <div class="mobile-filter" (click)="clickFilter()"></div>
-        <div class="filter-wrapper--mobile" >
+        <div class="filter-wrapper--mobile">
           <app-filter-field [filter]='getFilter()'></app-filter-field>
         </div>
-        <div class="filter-wrapperFilter" *ngFor="let iterFilter of getFilters()"  >
+        <div class="filter-wrapperFilter" *ngFor="let iterFilter of getFilters()">
           <app-filter-field style="width: 100%"
                             [filter]="iterFilter"
           ></app-filter-field>
@@ -27,19 +30,23 @@
       </div>
       <div class="filter__footer">
         <div>{{getCountOfSession()}} сессий</div>
-        <app-button [button]="buttonSettings" class="filter-options" ></app-button>
-        <app-button [button]="buttonReset" ></app-button>
+        <app-button [button]="buttonSettings" class="filter-options"></app-button>
+        <app-button [button]="buttonReset"></app-button>
       </div>
     </div>
-    <div class="menu " ><app-session-row [isHeader]="true" ></app-session-row></div>
-    <div class="menu" *ngFor="let iterSession of sessionApp">
-      <app-session-row style="position: relative"
-                       [session]="iterSession"
-                       [isHeader]="false"
-                       (sorting)="sortingByProgress($event)"
-      ></app-session-row>
+    <div class="menu ">
+      <app-session-row [isHeader]="true"></app-session-row>
+    </div>
+    <div class="row-session" *ngFor="let iterSession of sessionApp">
+      <div class="menu">
+        <app-session-row style="position: relative"
+                         [session]="iterSession"
+                         [isHeader]="false"
+        ></app-session-row>
+      </div>
     </div>
   </div>
 </div>
-<app-modal *ngIf="isModal" [filter]="getFilter('program')" [eventList]="eventList"  (modalChanged)="closeModal($event)" [filtersModal]="filtersModal"></app-modal>
+<app-modal *ngIf="isModal" [filter]="getFilter('program')" [eventList]="eventList" (modalChanged)="closeModal($event)"
+           [filtersModal]="filtersModal" [optionsSettings]="optionSettingsModal"></app-modal>
 

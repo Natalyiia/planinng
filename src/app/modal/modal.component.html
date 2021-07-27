@@ -36,7 +36,8 @@
             <app-filter-field [filter]="iterFilter"></app-filter-field>
           </div>
           <div style="color: rgba(0, 0, 0, 0.54);">{{members.length - 1}} пользователя</div>
-          <app-button [button]="buttonSettings"></app-button>
+
+          <app-button-selector [button]="buttonSettings" [optionSetting]="optionsSettings" class="filter-options" ></app-button-selector>
           <app-button [button]="buttonReset"></app-button>
         </div>
         <div class="drag-and-drop">
@@ -82,7 +83,7 @@
             <div class="instruction-empty">
               <div class="circle"></div>
               <div class="line"></div>
-              <img src="assets/cursor.png" class="cursor-icon"/>
+              <img src="assets/cursor.png" class="cursor-icon" alt="cursor-icon"/>
             </div>
             <div class="inform-empty">Наполните группу, перетаскивая участников из списка доступных в левой колонке</div>
           </div>

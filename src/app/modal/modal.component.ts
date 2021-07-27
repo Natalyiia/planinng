@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Button, EventList, FilterClass, Members, Tabs} from "../app.component";
+import {Button, EventList, FilterClass, Members, OptionSetting, Tabs} from "../app.component";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-modal',
@@ -7,12 +7,11 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  // @Input() modelData={isModal:false,filter:new FilterClass({}),eventList:[]}
-
   @Output() modalChanged: EventEmitter<boolean> = new EventEmitter()
   @Input() filter:FilterClass=new FilterClass({})
   @Input() eventList:EventList[]=[]
   @Input() filtersModal:FilterClass[]= []
+  @Input() optionsSettings:OptionSetting[]=[]
   isModal:boolean=true
   buttonSave:Button={
     icon:'check',
@@ -95,7 +94,6 @@ export class ModalComponent implements OnInit {
 
     this.isModal=false
     this.modalChanged.emit(this.isModal);
-    console.log('close')
   }
   swichTab(tabs:Tabs[]){
     this.tabsPlaning=tabs
@@ -141,7 +139,7 @@ export class ModalComponent implements OnInit {
     })
   }
   moveFromSelected(id:number){
-    this.membersSelected=this.membersSelected.filter((item,index)=>{
+    this.membersSelected=this.membersSelected.filter(item=>{
       if(item.id===id){
         this.members.push(item)
         return false

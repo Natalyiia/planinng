@@ -1,14 +1,8 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 export interface Members {
   name: string,
   isSelected: boolean,
   id: number,
-}
-
-export interface Select {
-  label: string,
-  icon: string,
-  options: OptionClass[],
 }
 
 export interface Button {
@@ -46,7 +40,13 @@ export class OptionClass {
   isSelected: boolean = false
   id: number = 0
 }
-
+export class OptionSetting extends OptionClass{
+  constructor({value = '', isSelected = false, id = 0},isMain:boolean=false) {
+    super({value,isSelected,id})
+    this.isMain=isMain
+  }
+  isMain:boolean=false
+}
 
 export class FilterClass {
   constructor({label = '', id = '', options = [new OptionClass({})]}) {
@@ -114,6 +114,16 @@ export class AppComponent {
     }
     return option
   }
+  toFormOptionSettings(array:any){
+    const option=[]
+    let i=0;
+    for (let item of array) {
+      item.id = i
+      option.push(new OptionSetting(item,item.isMain))
+      i++
+    }
+    return option
+  }
 
   toFormFilter(array: any) {
     const filter = []
@@ -140,8 +150,8 @@ export class AppComponent {
     return new FilterClass({...this.filters.find(item => item.id === id)})
   }
 
-  sortingByProgress(event: any) {
-    console.log('work')
+  sortingByProgress() {
+    //console.log('work')
   }
 
   getCountOfSession(): number {
@@ -153,11 +163,11 @@ export class AppComponent {
   }
 
   clickFilter() {
-    console.log('filter')
+    //console.log('filter')
   }
 
   clickSearch() {
-    console.log('search')
+    //console.log('search')
   }
 
   closeModal(flag: boolean) {
@@ -287,7 +297,6 @@ export class AppComponent {
     isDisable:true,
     size:20,
   }
-  //<img src="assets/Shape.png" alt="menu-icon" class="menu__icon">
   buttonMenu:Button={
     icon:'',
     iconImage:'assets/Shape.png',
@@ -298,5 +307,14 @@ export class AppComponent {
     isDisable:false,
     size:20,
   }
-
+  optionsSetting = [
+    {value: 'Поиск', isSelected: true,isMain:true, id: -1},
+    {value: 'Группа', isSelected: true,isMain:true, id: -1},
+    {value: 'Должность', isSelected: true,isMain:true, id: -1},
+    {value: 'Стаж', isSelected: true,isMain:true, id: -1},
+    {value: 'Позражделение', isSelected: false,isMain:false, id: -1},
+    {value: 'Округ', isSelected: false,isMain:false, id: -1},
+    {value: 'Город', isSelected: false,isMain:false, id: -1},
+  ]
+  optionSettingsModal:OptionSetting[]=this.toFormOptionSettings(this.optionsSetting)
 }
