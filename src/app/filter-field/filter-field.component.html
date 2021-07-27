@@ -1,7 +1,6 @@
 <div class="filter" >
   <label for="{{filter.id}}" class="filter__label" [class.filter__label--open]="isOpen">{{filter.label}}</label>
   <button class="filter__select" id="{{filter.id}}" (click)="handlerClick($event)" [class.filter__select--open]="isOpen">
-    <!--    (blur)="isOpen=!isOpen"-->
     <div [class.filter__select-filter]="filter.countSelected()>=1">{{filter.getSelected().value}}
       <span *ngIf="filter.countSelected()>=1"  (click)="handlerFilter($event,filter.getSelected().id)"></span>
     </div>

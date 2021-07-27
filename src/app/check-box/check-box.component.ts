@@ -10,7 +10,6 @@ export class CheckBoxComponent implements OnInit {
   @Output() setSelect:EventEmitter<number>= new EventEmitter()
 
   handlerSelect(){
-    //this.option.isSelected=!this.option.isSelected
     this.setSelect.emit(this.option.id)
   }
   constructor() { }

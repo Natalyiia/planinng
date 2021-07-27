@@ -1,6 +1,5 @@
 <div class="selection" >
-<!--  <label for="{{filter.id}}" class="filter__label" [class.filter__label&#45;&#45;open]="isOpen">{{filter.label}}</label>-->
-  <button class="selection__select"  (click)="handlerClick($event)" [class.selection__select--open]="isOpen">
+  <button class="selection__select"  (click)="handlerClick()" [class.selection__select--open]="isOpen">
 
     <img class='icon' [class.icon--hide]="isOpen||isSelected()" src="{{filter.icon}}" *ngIf="filter.icon">
     <span class="" > {{isSelected()?getSelected():!isOpen?filter.label:''}}</span>

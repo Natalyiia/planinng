@@ -22,18 +22,9 @@ export class SessionRowComponent implements OnInit {
   isEditor:boolean=false
   @Input()isHeader:boolean=false
   head=['Дата начала', 'Название', 'Участников', 'Тренер', 'Прогресс']
-  @Output() sorting :EventEmitter<any>=new EventEmitter();
 
   constructor() {
     this.getScreenSize();
-  }
-  onSorting(){
-    this.sorting.emit()
-  }
-  sortingByProgress() {
-    this.isSortByProgress = !this.isSortByProgress
-    this.onSorting()
-
   }
   ngOnInit(): void {
   }
