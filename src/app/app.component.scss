@@ -110,6 +110,8 @@ app-search-field {
   top: 27px;
   background: url("../assets/filter-inactive.png") no-repeat left 50% top 50%;
   @media only screen and (max-width: 900px) {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 }
@@ -119,12 +121,12 @@ app-search-field {
   margin: 0 ;
 }
 .row-session:hover{
-    padding: 0;
-    border-radius: 4px;
-    background-color:rgba(0, 0, 0, 0.10);
+  padding: 0;
+  border-radius: 4px;
+  background-color:rgba(0, 0, 0, 0.10);
 }
 .title{
-  @include flexDisplay(row,start,center,nowrap);
+  @include flexDisplay(row,flex-start,center,nowrap);
   margin-bottom: 32px;
   &__icon{
     @include imageSize(28px,30px);

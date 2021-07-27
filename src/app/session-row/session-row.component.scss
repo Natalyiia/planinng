@@ -17,6 +17,7 @@
     margin-right: 30px;
     @media only screen and (max-width: 900px) {
       overflow: hidden;
+      -o-text-overflow: ellipsis;
       text-overflow: ellipsis;
       min-width: 118px;
       margin-right: 16px;
@@ -101,11 +102,14 @@
 }
 .editor{
   background-color:white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: absolute;
   z-index: 6;
   bottom: 36px;
   left: -128px;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
   border-radius: 4px;
   @include flexDisplay(column,center,center,nowrap);
