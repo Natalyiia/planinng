@@ -81,8 +81,8 @@ export class ModalComponent implements OnInit {
     {title:'Запросить только имя и фамилию', isSelected:false, id:2},
     {title:'Не требовать регистрацию, имя и фамилию', isSelected:false, id:3},
   ]
+  membersTitle:Members={name:'Все пользователи', isSelected:false,id:0}
   members:Members[]=[
-    {name:'Все пользователи', isSelected:false,id:0},
     {name:'Максим Вильниц', isSelected:false,id:1},
     {name:'Ольга Крышкова', isSelected:false,id:2},
     {name:'Юлия Грунина', isSelected:false,id:3},
@@ -101,24 +101,38 @@ export class ModalComponent implements OnInit {
     this.tabsPlaning=tabs
   }
 
-  setSelected(id:number){
-    console.log('id',id)
-    if(id===0){
-      this.members[0].isSelected=!this.members[0].isSelected
-      this.members.forEach(iter=>{
-        iter.isSelected=this.members[0].isSelected
-      })
+
+  setSelected(id:number,swicher:number=2){
+    if(swicher===1) {
+      if (id === 0) {
+        this.membersTitle.isSelected = !this.membersTitle.isSelected
+        this.members.forEach(iter => {
+          iter.isSelected = this.membersTitle.isSelected
+        })
+      } else {
+        this.membersTitle.isSelected = false;
+        this.members.forEach(iter => iter.id === id ? iter.isSelected = !iter.isSelected : iter)
+      }
     }
     else{
-      this.members[0].isSelected=false;
-      this.members.forEach(iter=>iter.id===id?iter.isSelected=!iter.isSelected:iter)
+      this.membersSelected.forEach(iter => iter.id === id ? iter.isSelected = !iter.isSelected : iter)
     }
   }
+
   handlerSwap(){
     this.members=this.members.filter(iter=>{
       if(iter.isSelected&&iter.id!==0){
         this.membersSelected.push({...iter,isSelected:false})
-        this.members[0].isSelected=false
+        this.membersTitle.isSelected=false
+        return false
+      }
+      else{
+        return true
+      }
+    })
+    this.membersSelected=this.membersSelected.filter(iter=>{
+      if(iter.isSelected){
+        this.members.push({...iter,isSelected:false})
         return false
       }
       else{
@@ -137,7 +151,17 @@ export class ModalComponent implements OnInit {
       }
     })
   }
+ drop(event:CdkDragDrop<Members[]>){
+    if(event.previousContainer===event.container){
+      moveItemInArray(event.container.data,event.previousIndex,event.currentIndex);
+    }else{
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
 
+ }
   ngOnInit(): void {
   }
 

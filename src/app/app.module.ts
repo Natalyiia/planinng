@@ -18,6 +18,7 @@ import { EventComponent } from './event/event.component';
 import { SelectFieldComponent } from './select-field/select-field.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { CheckBoxComponent } from './check-box/check-box.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 registerLocaleData(localeRu, 'ru')
 
@@ -42,6 +43,7 @@ registerLocaleData(localeRu, 'ru')
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

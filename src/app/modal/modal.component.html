@@ -35,36 +35,56 @@
           <div *ngFor="let iterFilter of filtersModal" class="modal-filter-wrapper">
             <app-filter-field [filter]="iterFilter"></app-filter-field>
           </div>
-          <div style="color: rgba(0, 0, 0, 0.54);">{{members.length-1}} пользователя</div>
+          <div style="color: rgba(0, 0, 0, 0.54);">{{members.length - 1}} пользователя</div>
           <app-button [button]="buttonSettings"></app-button>
           <app-button [button]="buttonReset"></app-button>
         </div>
         <div class="drag-and-drop">
           <app-button [button]="buttonReplace" (click)="handlerSwap()"></app-button>
         </div>
-        <div class="checkbox-wrapper" *ngFor="let iterOption of members" >
-          <app-check-box [option]="iterOption" (setSelect)="setSelected($event)"></app-check-box>
+        <div class="checkbox-wrapper">
+          <app-check-box [option]="membersTitle" (setSelect)="setSelected($event,1)"></app-check-box>
         </div>
-
+        <div
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="members"
+          [cdkDropListConnectedTo]="[doneList]"
+          (cdkDropListDropped)="drop($event)"
+          class="example-list"
+        >
+          <div class="checkbox-wrapper" *ngFor="let iterOption of members" cdkDrag>
+            <app-check-box [option]="iterOption" (setSelect)="setSelected($event,1)"></app-check-box>
+          </div>
+        </div>
       </div>
       <div class="users">
         <div class="users__plan-title">
           Участники мероприятия
         </div>
-        <div class="users__list--empty" *ngIf="!membersSelected.length">
-          <div class="instruction-empty">
-            <div class="circle"></div>
-            <div class="line"></div>
-            <img src="assets/cursor.png" class="cursor-icon"/>
-          </div>
-          <div class="inform-empty">Наполните группу, перетаскивая участников из списка доступных в левой колонке</div>
-        </div>
-        <div class="users__list--fill" *ngIf="membersSelected.length">
-          <div class="checkbox-wrapper" *ngFor="let iterOption of membersSelected">
-            <app-check-box [option]="iterOption"></app-check-box>
-            <div class="delete-button" (click)="moveFromSelected(iterOption.id)">
-              <app-button [button]="buttonTrash"></app-button>
+        <div class="users__list--fill" [class.users__list--empty]="!membersSelected.length">
+
+          <div cdkDropList
+               class="example-list"
+               #doneList="cdkDropList"
+               [cdkDropListData]="membersSelected"
+               [cdkDropListConnectedTo]="[todoList]"
+               (cdkDropListDropped)="drop($event)">
+            <div class="checkbox-wrapper" *ngFor="let iterOption of membersSelected" cdkDrag>
+              <app-check-box [option]="iterOption" (setSelect)="setSelected($event)"></app-check-box>
+              <div class="delete-button" (click)="moveFromSelected(iterOption.id)">
+                <app-button [button]="buttonTrash"></app-button>
+              </div>
             </div>
+
+          </div>
+          <div *ngIf="!membersSelected.length" class="instuction">
+            <div class="instruction-empty">
+              <div class="circle"></div>
+              <div class="line"></div>
+              <img src="assets/cursor.png" class="cursor-icon"/>
+            </div>
+            <div class="inform-empty">Наполните группу, перетаскивая участников из списка доступных в левой колонке</div>
           </div>
         </div>
       </div>
