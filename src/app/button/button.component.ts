@@ -23,7 +23,7 @@ export class ButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.isTick=this.button.icon==='&#10004;'
+    this.isTick=this.button.icon==='check'
   }
 
 }

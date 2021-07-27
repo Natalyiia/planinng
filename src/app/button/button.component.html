@@ -4,12 +4,13 @@
         [class.button--pressed]="isPressed"
         (blur)="isPressed=false"
         [class.button--disabled]="button.isDisable">
-  <span *ngIf="button.icon&&isTick" class="button__icon" [ngStyle]="{fontSize:button.size+'px'}">
-    &#10004;
+  <span *ngIf="button.icon&&isTick" class="button__icon check" [ngStyle]="{fontSize:button.size+'px'}">
+
   </span>
   <span *ngIf="button.icon&&!isTick" class="button__icon" [class.button__icon--rotate]="button.isRotate" [ngStyle]="{fontSize:button.size+'px'}">
     {{button.icon}}
   </span>
+  <img *ngIf="button.iconImage" src="{{button.iconImage}}">
   <span *ngIf="button.label" class="button__label">
     {{button.label}}
   </span>

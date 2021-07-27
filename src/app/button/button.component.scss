@@ -7,11 +7,11 @@
   background: none;
   box-sizing: border-box;
   border-radius: 24px;
-  //@media only screen and (max-width: 900px) {
-  //    height: 24px;
-  //    width: 24px;
-  //  @include flexDisplay(row,flex-end,center,nowrap);
-  //}
+  @media only screen and (max-width: 900px) {
+      height: 24px !important;
+      width: 24px !important;
+    @include flexDisplay(row,center,center,nowrap);
+  }
   &__icon {
     font-weight: 500;
     &--rotate{
@@ -53,4 +53,15 @@
 
 .button--disabled:hover,.button--disabled:focus{
   background:inherit;
+}
+.check {
+  left: 7px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #1071FF;;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

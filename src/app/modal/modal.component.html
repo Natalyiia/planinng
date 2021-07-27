@@ -6,21 +6,70 @@
       <app-button [button]="buttonClose" (click)="closeModal()"></app-button>
     </div>
     <div class="modal-wrapper">
-      <app-tab [tabs]="tabsPlaning"></app-tab>
+      <app-tab [tabs]="tabsPlaning" (swichTab)="swichTab($event)"></app-tab>
     </div>
     <hr class="modal-hr" style="margin-bottom: 32px">
-    <div class="modal-wrapper">
+    <div class="modal-wrapper" *ngIf="tabsPlaning[0].isActive">
       <div style="margin-bottom: 52px">
-        <app-filter-field [filter]='filter' [isModal]="true"  ></app-filter-field>
+        <app-filter-field [filter]='filter' [isModal]="true"></app-filter-field>
       </div>
-      <div class="plan-title">
+      <div class="users__plan-title">
         Мероприятие, дата и время проведения
       </div>
       <app-event *ngFor="let iterEvent of eventList" [event]="iterEvent"></app-event>
-      <div class="plan-title" style="margin-top: 34px">
+      <div class="users__plan-title" style="margin-top: 34px">
         Условия записи по коду
       </div>
       <app-radio-button [conditions]="conditions"></app-radio-button>
     </div>
+    <div class="modal-wrapper flex" *ngIf="tabsPlaning[1].isActive">
+      <div class="users">
+        <div class="users__plan-title">
+          Доступные участники
+        </div>
+        <div class="modal-settins">
+          <div class="modal-filter-wrapper">
+            <app-search-field></app-search-field>
+          </div>
+
+          <div *ngFor="let iterFilter of filtersModal" class="modal-filter-wrapper">
+            <app-filter-field [filter]="iterFilter"></app-filter-field>
+          </div>
+          <div style="color: rgba(0, 0, 0, 0.54);">{{members.length-1}} пользователя</div>
+          <app-button [button]="buttonSettings"></app-button>
+          <app-button [button]="buttonReset"></app-button>
+        </div>
+        <div class="drag-and-drop">
+          <app-button [button]="buttonReplace" (click)="handlerSwap()"></app-button>
+        </div>
+        <div class="checkbox-wrapper" *ngFor="let iterOption of members" >
+          <app-check-box [option]="iterOption" (setSelect)="setSelected($event)"></app-check-box>
+        </div>
+
+      </div>
+      <div class="users">
+        <div class="users__plan-title">
+          Участники мероприятия
+        </div>
+        <div class="users__list--empty" *ngIf="!membersSelected.length">
+          <div class="instruction-empty">
+            <div class="circle"></div>
+            <div class="line"></div>
+            <img src="assets/cursor.png" class="cursor-icon"/>
+          </div>
+          <div class="inform-empty">Наполните группу, перетаскивая участников из списка доступных в левой колонке</div>
+        </div>
+        <div class="users__list--fill" *ngIf="membersSelected.length">
+          <div class="checkbox-wrapper" *ngFor="let iterOption of membersSelected">
+            <app-check-box [option]="iterOption"></app-check-box>
+            <div class="delete-button" (click)="moveFromSelected(iterOption.id)">
+              <app-button [button]="buttonTrash"></app-button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </div>

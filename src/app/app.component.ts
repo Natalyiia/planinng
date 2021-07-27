@@ -1,26 +1,38 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+export interface Members {
+  name: string,
+  isSelected: boolean,
+  id: number,
+}
 
+export interface Select {
+  label: string,
+  icon: string,
+  options: OptionClass[],
+}
 
 export interface Button {
-  icon:string,
-  iconImage:string,
-  label:string,
-  width:number,
-  height:number,
-  isRotate:boolean,
-  isDisable:boolean,
-  size:number
+  icon: string,
+  iconImage: string,
+  label: string,
+  width: number,
+  height: number,
+  isRotate: boolean,
+  isDisable: boolean,
+  size: number
 }
-export interface Tabs{
-  title:string,
-  isActive:boolean,
-  id:number,
+
+export interface Tabs {
+  title: string,
+  isActive: boolean,
+  id: number,
 }
+
 export interface EventList {
-  title:string,
-  type:string,
-  id:number,
-  trainers:OptionClass[],
+  title: string,
+  type: string,
+  id: number,
+  trainers: OptionClass[],
 }
 
 export class OptionClass {
@@ -86,8 +98,8 @@ export class SessionClass {
 })
 export class AppComponent {
 
-  isModal:boolean=false;
-  pixel:number=8
+  isModal: boolean = false;
+
   constructor() {
     this.sortingByProgress.bind(this)
   }
@@ -121,7 +133,38 @@ export class AppComponent {
     }
     return session
   }
-  tabsPlaning=[{title:'Груповое',isActive:true,id:0} ,{title:'Индивидуальное', isActive:false,id:1}]
+
+  compare = (a: SessionClass, b: SessionClass) => b.sessionProgress - a.sessionProgress
+
+  getFilter(id: string = 'sort'): FilterClass {
+    return new FilterClass({...this.filters.find(item => item.id === id)})
+  }
+
+  sortingByProgress(event: any) {
+    console.log('work')
+  }
+
+  getCountOfSession(): number {
+    return this.sessionApp.length
+  }
+
+  getFilters() {
+    return this.filtersApp.filter(f => f.id !== 'sort')
+  }
+
+  clickFilter() {
+    console.log('filter')
+  }
+
+  clickSearch() {
+    console.log('search')
+  }
+
+  closeModal(flag: boolean) {
+    this.isModal = flag
+  }
+
+  tabsPlaning = [{title: 'Груповое', isActive: true, id: 0}, {title: 'Индивидуальное', isActive: false, id: 1}]
   optionsProgram = [
     {value: 'Все', isSelected: true, id: -1},
     {value: 'Главные правила продаж', isSelected: false, id: -1},
@@ -183,36 +226,76 @@ export class AppComponent {
     {value: 'Кирилл Котов', isSelected: false, id: -1}
   ]
 
-  eventList:EventList[]=[
-    {title:'Главные правила продаж', type:'Тренинг', id:0, trainers:this.toFormOptions(this.optionsTrainer)},
-    {title:'Страхование без потерь', type:'Тренинг', id:0, trainers:this.toFormOptions(this.optionsTrainer)},
-    {title:'Страховой случай или как помочь клиенту', type:'Тренинг', id:0, trainers:this.toFormOptions(this.optionsTrainer)},
+  eventList: EventList[] = [
+    {title: 'Главные правила продаж', type: 'Тренинг', id: 0, trainers: this.toFormOptions(this.optionsTrainer)},
+    {title: 'Страхование без потерь', type: 'Тренинг', id: 0, trainers: this.toFormOptions(this.optionsTrainer)},
+    {
+      title: 'Страховой случай или как помочь клиенту',
+      type: 'Тренинг',
+      id: 0,
+      trainers: this.toFormOptions(this.optionsTrainer)
+    },
   ]
-
-  modelData:any={filter:this.getFilter('program'),eventList:this.eventList, isModel:this.isModal }
-
-  compare = (a: SessionClass, b: SessionClass) => b.sessionProgress - a.sessionProgress
-  getFilter(id:string='sort'): FilterClass{
-    return new FilterClass({...this.filters.find(item=>item.id===id)})// this.filters.find(item=>item.id===id)
+  optionsFilterGroup = [
+    {value: 'Администрирование', isSelected: true, id: -1},
+    {value: 'Продажи', isSelected: false, id: -1},
+    {value: 'It', isSelected: false, id: -1}
+  ]
+  optionsFilterExperience = [
+    {value: '3-10 лет', isSelected: true, id: -1},
+    {value: '1-3 года', isSelected: false, id: -1},
+    {value: 'без опыта', isSelected: false, id: -1}
+  ]
+  optionsFilterPosition = [
+    {value: 'Менеджер по персоналу', isSelected: true, id: -1},
+    {value: 'Руководитель отдела', isSelected: false, id: -1},
+    {value: 'Системный аналитик', isSelected: false, id: -1}
+  ]
+  filtersSettingMember = [
+    {label: 'Группа', id: 'group', options: this.toFormOptions(this.optionsFilterGroup)},
+    {label: 'Должность', id: 'position', options: this.toFormOptions(this.optionsFilterPosition)},
+    {label: 'Стаж', id: 'experience', options: this.toFormOptions(this.optionsFilterExperience)},
+  ]
+  filtersModal = this.toFormFilter(this.filtersSettingMember)
+  buttonAdd:Button={
+    icon:'+',
+    iconImage:'',
+    label:'Запланировать',
+    width: 161,
+    height: 40,
+    isRotate:false,
+    isDisable:false,
+    size:20,
   }
-  sortingByProgress(event:any) {
-    console.log('work')
-   // console.log(this.sessionApp.sort(this.compare));
+  buttonSettings:Button={
+    icon:'',
+    iconImage:'assets/filter.png',
+    label:'Настроить фильтр',
+    width: 181,
+    height: 36,
+    isRotate:false,
+    isDisable:false,
+    size:16,
   }
-
-  getCountOfSession(): number {
-    return this.sessionApp.length
+  buttonReset:Button={
+    icon:'+',
+    iconImage:'',
+    label:'Сбросить',
+    width: 114,
+    height: 36,
+    isRotate:true,
+    isDisable:true,
+    size:20,
   }
-  getFilters(){
-    return this.filtersApp.filter(f=>f.id!=='sort')
+  //<img src="assets/Shape.png" alt="menu-icon" class="menu__icon">
+  buttonMenu:Button={
+    icon:'',
+    iconImage:'assets/Shape.png',
+    label:'',
+    width: 40,
+    height: 40,
+    isRotate:false,
+    isDisable:false,
+    size:20,
   }
-
-  clickFilter(){
-    console.log('filter')
-  }
-
-  clickSearch(){
-    console.log('search')
-  }
-
 }

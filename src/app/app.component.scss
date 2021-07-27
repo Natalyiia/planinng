@@ -120,20 +120,7 @@
 }
 
 .filter-options {
-  width: 181px;
-  height: 36px;
   margin-left: 76px;
-  @include flexDisplay(row, center, center, nowrap);
-
-  &__img {
-    @include imageSize(14px, 14px)
-  }
-
-  &__title {
-    margin-left: 10px;
-    font-weight: 600;
-    color: #1071FF;
-  }
 }
 
 .menu {

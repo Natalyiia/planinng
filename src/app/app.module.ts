@@ -11,14 +11,13 @@ import { TabComponent } from './tab/tab.component';
 import { SearchFieldComponent } from './search-field/search-field.component';
 import { FilterFieldComponent } from './filter-field/filter-field.component';
 import { SessionRowComponent } from './session-row/session-row.component';
-import { MenuComponent } from './menu/menu.component';
-import { AddButtonComponent } from './add-button/add-button.component';
 import { ModalComponent } from './modal/modal.component';
 import { ButtonComponent } from './button/button.component';
 import {FormsModule} from "@angular/forms";
 import { EventComponent } from './event/event.component';
 import { SelectFieldComponent } from './select-field/select-field.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
+import { CheckBoxComponent } from './check-box/check-box.component';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -31,13 +30,12 @@ registerLocaleData(localeRu, 'ru')
     SearchFieldComponent,
     FilterFieldComponent,
     SessionRowComponent,
-    MenuComponent,
-    AddButtonComponent,
     ModalComponent,
     ButtonComponent,
     EventComponent,
     SelectFieldComponent,
     RadioButtonComponent,
+    CheckBoxComponent,
 
   ],
   imports: [
