@@ -1,6 +1,7 @@
 <div class="selection" >
   <button class="selection__select"  (click)="handlerClick()" [class.selection__select--open]="isOpen">
-
+    <span *ngIf="!isOpen" class="arrow-down"></span>
+    <span *ngIf="isOpen" class="arrow-up"></span>
     <img class='icon' [class.icon--hide]="isOpen||isSelected()" src="{{filter.icon}}" *ngIf="filter.icon">
     <span class="" > {{isSelected()?getSelected():!isOpen?filter.label:''}}</span>
   </button>

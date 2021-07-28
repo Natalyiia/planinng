@@ -24,6 +24,7 @@
   width: 246px;
   height: 66px;
   margin-right: 16px;
+  position: relative;
 }
 .event-wrapper:last-child{
   margin-right: 0;
@@ -38,4 +39,93 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   @include font();
   color: rgba(0, 0, 0, 0.87);
+}
+.datepicker-toggle {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 19px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  @include font();
+  color: rgba(0, 0, 0, 0.87);
+}
+.datepicker-toggle-button {
+  padding-left:32px;
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/calendar.png') no-repeat;
+}
+.datepicker-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.datepicker-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.delete{
+  position: absolute;
+  right: 0;
+  top:28px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  font-size: 25px;
+  color:rgba(0, 0, 0, 0.38);
+  cursor: default;
+}
+.arrow{
+  @include  arrow(rgba(0, 0, 0, 0.38),45deg,30px,2px,2px);
+}
+.time-toggle {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 19px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  @include font();
+  color: rgba(0, 0, 0, 0.87);
+}
+.time-toggle-button {
+  padding-left:32px;
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/clock.png') no-repeat;
+}
+.time-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.time-input::-webkit-calendar-picker-indicator{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 }

@@ -15,11 +15,13 @@
   }
 
   &__select {
+    position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     @include font();
-    background: url("../../assets/arrow-down.png") no-repeat right;
+    background: white;
+    //background: url("../../assets/arrow-down.png") no-repeat right;
     width: 100%;
     padding-bottom: 7px;
     border: none;
@@ -27,8 +29,8 @@
     text-align: start;
 
     &--open {
-      background: none;
-      background: url("../../assets/arrow-up.png") no-repeat right;
+      //background: none;
+      //background: url("../../assets/arrow-up.png") no-repeat right;
       border-bottom: 1px solid #1071FF;
     }
   }
@@ -38,8 +40,8 @@
   z-index: 1;
   margin-top:8px;
   @include flexDisplay(column,start,start,nowrap);
-  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
   border-radius: 4px;
   padding: 18px 16px;
   width: 200px;
@@ -74,4 +76,10 @@
   &--hide{
     visibility: hidden;
   }
+}
+.arrow-down{
+  @include  arrow(rgba(0, 0, 0, 0.38),45deg,10px,2px,2px);
+}
+.arrow-up{
+  @include  arrow(rgba(0, 0, 0, 0.38),-135deg,10px,2px,2px);
 }

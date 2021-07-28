@@ -3,13 +3,24 @@
 <div class="settings">
   <div class="event-wrapper">
     <div class="lable">Дата</div>
-    <input type="date" class="customization" />
+    <span class="datepicker-toggle">
+      <span class="datepicker-toggle-button">{{date|date:'d MMMM ':undefined:'ru'}}</span>
+      <input type="date" class="datepicker-input" (change)="setDate($event)">
+    </span>
+    <span *ngIf="date" class="delete" (click)="date=null">+</span>
+    <span *ngIf="!date" class="arrow" ></span>
   </div>
   <div class="event-wrapper">
     <div class="lable">Время</div>
-    <input type="time" class="customization"/>
+<!--    <input type="time" class="customization"/>-->
+    <span class="time-toggle">
+      <span class="time-toggle-button">{{time}}</span>
+      <input type="time" class="time-input" (change)="setTime($event)">
+    </span>
+    <span *ngIf="time" class="delete" (click)="time=null">+</span>
+    <span *ngIf="!time" class="arrow" ></span>
   </div>
   <div class="event-wrapper">
-  <app-select-field [filter]="selectTrainer"></app-select-field>
+    <app-select-field [filter]="selectTrainer"></app-select-field>
   </div>
 </div>

@@ -22,3 +22,14 @@
   font-size: 10px;
   line-height: 12px;
 }
+@mixin arrow($color,$rotate,$position-top,$position-right,$width){
+  position: absolute;
+  right: $position-right;
+  top: $position-top;
+  border: solid $color;
+  border-width: 0 $width $width 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate($rotate);
+  -webkit-transform: rotate($rotate);
+}

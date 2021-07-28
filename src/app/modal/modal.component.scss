@@ -42,7 +42,7 @@
 }
 
 .flex{
-  @include flexDisplay(row,space-between,flex-start,wrap)
+  @include flexDisplay(row,space-between,flex-start,nowrap)
 }
 .users{
   position: relative;
